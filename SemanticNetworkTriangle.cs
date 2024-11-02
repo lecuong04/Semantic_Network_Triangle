@@ -2,10 +2,11 @@
 {
     public class SemanticNetworkTriangle
     {
-        public static readonly int nCol = 23;
+        public static readonly int nCol = 26;
         public static readonly int nRow = 13;
 
         HashSet<int> history = new HashSet<int>(nCol);
+        public HashSet<int> History => new HashSet<int>(history);
 
         int[,] data = new int[nRow, nCol];
         public int[,] Data => (int[,])data.Clone();
@@ -236,6 +237,9 @@
             data[0, 20] = data[5, 20] = data[8, 20] = -1;
             data[0, 21] = data[4, 21] = data[9, 21] = -1;
             data[1, 22] = data[3, 22] = data[9, 22] = -1;
+            data[0, 23] = data[3, 23] = data[4, 23] = data[5, 23] = -1;
+            data[1, 24] = data[3, 24] = data[4, 24] = data[5, 24] = -1;
+            data[2, 25] = data[3, 25] = data[4, 25] = data[5, 25] = -1;
         }
 
         static double DegreeToRadian(double x) => x * Math.PI / 180;
@@ -342,29 +346,17 @@
                             {
                                 case 3:
                                     {
-                                        double t1 = Math.Pow(_b, 2);
-                                        double t2 = Math.Pow(_c, 2);
-                                        double t3 = Math.Pow(_S, 2);
-                                        a = Math.Sqrt(t1 + t2 + Math.Sqrt((t1 * t2) - (4 * t3)));
+                                        continue;
                                     }
-                                    break;
                                 case 4:
                                     {
-                                        double t1 = Math.Pow(_a, 2);
-                                        double t2 = Math.Pow(_c, 2);
-                                        double t3 = Math.Pow(_S, 2);
-                                        b = Math.Sqrt(t1 + t2 + Math.Sqrt((t1 * t2) - (4 * t3)));
+                                        continue;
                                     }
-                                    break;
 
                                 case 5:
                                     {
-                                        double t1 = Math.Pow(_a, 2);
-                                        double t2 = Math.Pow(_b, 2);
-                                        double t3 = Math.Pow(_S, 2);
-                                        c = Math.Sqrt(t1 + t2 + Math.Sqrt((t1 * t2) - (4 * t3)));
+                                        continue;
                                     }
-                                    break;
                                 case 6:
                                     {
                                         double p = (_a + _b + _c) / 2;
@@ -662,7 +654,7 @@
                                     break;
                                 case 11:
                                     {
-                                        R = (_a * _b * _c) / (4 * _S);
+                                        R = _a * _b * _c / (4 * _S);
                                     }
                                     break;
                             }
@@ -832,20 +824,107 @@
                             }
                         }
                         break;
+                    case 23:
+                        {
+                            switch (row)
+                            {
+                                case 0:
+                                    {
+                                        A = Math.Asin(((_b * _b) + (_c * _c) - (_a * _a)) / (2 * _b * _c)) * (180 / Math.PI);
+                                    }
+                                    break;
+                                case 3:
+                                    {
+                                        a = Math.Sqrt((_b * _b) + (_c * _c) - (2 * _b * _c * Math.Cos(DegreeToRadian(_A))));
+                                    }
+                                    break;
+                                case 4:
+                                    {
+                                        continue;
+                                    }
+                                case 5:
+                                    {
+                                        continue;
+                                    }
+                            }
+                        }
+                        break;
+                    case 24:
+                        {
+                            switch (row)
+                            {
+                                case 1:
+                                    {
+                                        B = Math.Asin(((_a * _a) + (_c * _c) - (_b * _b)) / (2 * _a * _c)) * (180 / Math.PI);
+                                    }
+                                    break;
+                                case 3:
+                                    {
+                                        continue;
+                                    }
+                                case 4:
+                                    {
+                                        b = Math.Sqrt((_a * _a) + (_c * _c) - (2 * _a * _c * Math.Cos(DegreeToRadian(_B))));
+                                    }
+                                    break;
+                                case 5:
+                                    {
+                                        continue;
+                                    }
+                            }
+                        }
+                        break;
+                    case 25:
+                        {
+                            switch (row)
+                            {
+                                case 2:
+                                    {
+                                        C = Math.Asin(((_a * _a) + (_b * _b) - (_c * _c)) / (2 * _a * _b)) * (180 / Math.PI);
+                                    }
+                                    break;
+                                case 3:
+                                    {
+                                        continue;
+                                    }
+                                case 4:
+                                    {
+                                        continue;
+                                    }
+                                case 5:
+                                    {
+                                        c = Math.Sqrt((_a * _a) + (_b * _b) - (2 * _a * _b * Math.Cos(DegreeToRadian(_C))));
+                                    }
+                                    break;
+                            }
+                        }
+                        break;
                 }
                 history.Add(col);
             }
-            //Debug(this);
+            Debug(this);
             if (tryAgain)
                 Calculate();
         }
 
         public static void Debug(SemanticNetworkTriangle semanticNetwork)
         {
+            bool first = true;
             for (int row = 0; row < nRow; row++)
             {
+                if (first)
+                {
+                    for (int col = 0; col < nCol; col++)
+                    {
+                        System.Diagnostics.Debug.Write($"{string.Format("{0,3}", col + 1)}\t");
+                    }
+                    System.Diagnostics.Debug.Write("\n");
+                    first = false;
+                }
                 for (int col = 0; col < nCol; col++)
+                {
                     System.Diagnostics.Debug.Write($"{string.Format("{0,3}", semanticNetwork.data[row, col])}\t");
+                }
                 System.Diagnostics.Debug.Write("\n");
             }
             System.Diagnostics.Debug.Write("\n");
