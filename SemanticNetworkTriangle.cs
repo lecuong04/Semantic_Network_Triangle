@@ -5,8 +5,11 @@
         public static readonly int nCol = 26;
         public static readonly int nRow = 13;
 
-        HashSet<int> history = new HashSet<int>(nCol);
-        public HashSet<int> History => new HashSet<int>(history);
+        bool err = false;
+        public bool Error => err;
+
+        Dictionary<int, int> history = new Dictionary<int, int>(nRow);
+        public Dictionary<int, int> History => history;
 
         int[,] data = new int[nRow, nCol];
         public int[,] Data => (int[,])data.Clone();
@@ -246,16 +249,22 @@
 
         public void Calculate()
         {
+            err = false;
             bool tryAgain = false;
             for (int col = 0; col < nCol; col++)
             {
-                if (history.Contains(col))
+                if (history.Keys.Contains(col))
                     continue;
                 int row = TriggerCol(col);
                 if (row == -1)
                     continue;
+                if (_a != 0 && _b != 0 && _c != 0)
+                    if (!(_a < _b + _c && _b < _a + _c && _c < _a + _b))
+                    {
+                        err = true;
+                        break;
+                    }
                 tryAgain = true;
-                // TODO
                 switch (col)
                 {
                     case 0:
@@ -900,7 +909,7 @@
                         }
                         break;
                 }
-                history.Add(col);
+                history[col] = row;
             }
             Debug(this);
             if (tryAgain)
@@ -914,11 +923,11 @@
             {
                 if (first)
                 {
-                    for (int col = 0; col < nCol; col++)
-                    {
-                        System.Diagnostics.Debug.Write($"{string.Format("{0,3}", col + 1)}\t");
-                    }
-                    System.Diagnostics.Debug.Write("\n");
+                    //for (int col = 0; col < nCol; col++)
+                    //{
+                    //    System.Diagnostics.Debug.Write($"{string.Format("{0,3}", col + 1)}\t");
+                    //}
+                    //System.Diagnostics.Debug.Write("\n");
                     first = false;
                 }
                 for (int col = 0; col < nCol; col++)

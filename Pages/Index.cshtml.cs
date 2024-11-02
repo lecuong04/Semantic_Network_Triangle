@@ -16,6 +16,7 @@ namespace Semantic_Network_Triangle.Pages
 
         public IActionResult OnGet()
         {
+            ViewData["Error"] = Triangle.Error;
             return Page();
         }
 
@@ -35,12 +36,14 @@ namespace Semantic_Network_Triangle.Pages
             Triangle.R = pR;
             Triangle.r = iR;
             Triangle.Calculate();
+            ViewData["Error"] = Triangle.Error;
             return Page();
         }
 
         public IActionResult OnPostReset()
         {
             Triangle = new SemanticNetworkTriangle();
+            ViewData["Error"] = Triangle.Error;
             return Page();
         }
     }
