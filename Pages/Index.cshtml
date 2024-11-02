@@ -223,10 +223,10 @@
 {
     <div class="row">
         <div class="col">
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                <ol class="breadcrumb fs-4" style="justify-content:center;">
-                    <li class="breadcrumb-item">Thuộc tính gốc</li>
-                    @if (triangle.History.Keys.Count() == 0)
+            <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
+                <ol class="breadcrumb fs-5" style="justify-content:center;">
+                    <li class="breadcrumb-item">Thuộc tính:</li>
+                    @if (triangle.Root.Count() == 0)
                     {
                         <li class="breadcrumb-item">Rỗng</li>
                     }
@@ -234,74 +234,76 @@
                     {
                         @foreach (int i in triangle.Root)
                         {
-                            @switch (i)
-                            {
-                                case 0:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math></li>
-                                        break;
-                                    }
-                                case 1:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math></li>
-                                        break;
-                                    }
-                                case 2:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi></math></li>
-                                        break;
-                                    }
-                                case 3:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math></li>
-                                        break;
-                                    }
-                                case 4:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math></li>
-                                        break;
-                                    }
-                                case 5:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math></li>
-                                        break;
-                                    }
-                                case 6:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi></math></li>
-                                        break;
-                                    }
-                                case 7:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub></math></li>
-                                        break;
-                                    }
-                                case 8:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>B</mi></msub></math></li>
-                                        break;
-                                    }
-                                case 9:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>C</mi></msub></math></li>
-                                        break;
-                                    }
-                                case 10:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi></math></li>
-                                        break;
-                                    }
-                                case 11:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi></math></li>
-                                        break;
-                                    }
-                                case 12:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></li>
-                                        break;
-                                    }
-                            }
+                            <li class="breadcrumb-item">
+                                @switch (i)
+                                {
+                                    case 0:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math>
+                                            break;
+                                        }
+                                    case 1:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math>
+                                            break;
+                                        }
+                                    case 2:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi></math>
+                                            break;
+                                        }
+                                    case 3:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math>
+                                            break;
+                                        }
+                                    case 4:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math>
+                                            break;
+                                        }
+                                    case 5:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math>
+                                            break;
+                                        }
+                                    case 6:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi></math>
+                                            break;
+                                        }
+                                    case 7:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub></math>
+                                            break;
+                                        }
+                                    case 8:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>B</mi></msub></math>
+                                            break;
+                                        }
+                                    case 9:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>C</mi></msub></math>
+                                            break;
+                                        }
+                                    case 10:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi></math>
+                                            break;
+                                        }
+                                    case 11:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi></math>
+                                            break;
+                                        }
+                                    case 12:
+                                        {
+                                            <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math>
+                                            break;
+                                        }
+                                }
+                            </li>
                         }
                     }
                 </ol>
@@ -311,7 +313,7 @@
     <div class="row">
         <div class="col">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                <ol class="breadcrumb fs-4" style="justify-content:center;">
+                <ol class="breadcrumb fs-5" style="justify-content:center;">
                     <li class="breadcrumb-item">Công thức</li>
                     @if (triangle.History.Keys.Count() == 0)
                     {
@@ -321,94 +323,78 @@
                     {
                         @foreach (int i in triangle.History.Keys)
                         {
-                            <li class="breadcrumb-item">(@(i + 1))</li>
-                        }
-                    }
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                <ol class="breadcrumb fs-4" style="justify-content:center;">
-                    <li class="breadcrumb-item">Thuộc tính đã tính</li>
-                    @if (triangle.History.Values.Count() == 0)
-                    {
-                        <li class="breadcrumb-item">Rỗng</li>
-                    }
-                    else
-                    {
-                        @foreach (int i in triangle.History.Values)
-                        {
-                            @switch (i)
-                            {
-                                case 0:
+                            <li class="breadcrumb-item">
+                                (@(i + 1)) <sub>
+                                    @switch (triangle.History[i])
                                     {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math></li>
-                                        break;
+                                        case 0:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math>
+                                                break;
+                                            }
+                                        case 1:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math>
+                                                break;
+                                            }
+                                        case 2:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi></math>
+                                                break;
+                                            }
+                                        case 3:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math>
+                                                break;
+                                            }
+                                        case 4:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math>
+                                                break;
+                                            }
+                                        case 5:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math>
+                                                break;
+                                            }
+                                        case 6:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi></math>
+                                                break;
+                                            }
+                                        case 7:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub></math>
+                                                break;
+                                            }
+                                        case 8:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>B</mi></msub></math>
+                                                break;
+                                            }
+                                        case 9:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>C</mi></msub></math>
+                                                break;
+                                            }
+                                        case 10:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi></math>
+                                                break;
+                                            }
+                                        case 11:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi></math>
+                                                break;
+                                            }
+                                        case 12:
+                                            {
+                                                <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math>
+                                                break;
+                                            }
                                     }
-                                case 1:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math></li>
-                                        break;
-                                    }
-                                case 2:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi></math></li>
-                                        break;
-                                    }
-                                case 3:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math></li>
-                                        break;
-                                    }
-                                case 4:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math></li>
-                                        break;
-                                    }
-                                case 5:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math></li>
-                                        break;
-                                    }
-                                case 6:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi></math></li>
-                                        break;
-                                    }
-                                case 7:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub></math></li>
-                                        break;
-                                    }
-                                case 8:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>B</mi></msub></math></li>
-                                        break;
-                                    }
-                                case 9:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>C</mi></msub></math></li>
-                                        break;
-                                    }
-                                case 10:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi></math></li>
-                                        break;
-                                    }
-                                case 11:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi></math></li>
-                                        break;
-                                    }
-                                case 12:
-                                    {
-                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></li>
-                                        break;
-                                    }
-                            }
+                                </sub>
+                            </li>
                         }
                     }
                 </ol>
