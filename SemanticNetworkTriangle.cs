@@ -5,11 +5,15 @@
         public static readonly int nCol = 26;
         public static readonly int nRow = 13;
 
+        bool isCalculate = false;
         bool err = false;
         public bool Error => err;
 
         Dictionary<int, int> history = new Dictionary<int, int>(nRow);
-        public Dictionary<int, int> History => history;
+        public Dictionary<int, int> History => new Dictionary<int, int>(history);
+
+        List<int> root = new List<int>();
+        public List<int> Root => new List<int>(root);
 
         int[,] data = new int[nRow, nCol];
         public int[,] Data => (int[,])data.Clone();
@@ -21,7 +25,7 @@
             set
             {
                 double tmp = value % 360;
-                if (tmp == 0)
+                if (tmp == 0 || tmp == _A)
                     return;
                 _A = tmp;
                 UpdateRow(0, tmp);
@@ -35,7 +39,7 @@
             set
             {
                 double tmp = value % 360;
-                if (tmp == 0)
+                if (tmp == 0 || tmp == _B)
                     return;
                 _B = tmp;
                 UpdateRow(1, tmp);
@@ -49,7 +53,7 @@
             set
             {
                 double tmp = value % 360;
-                if (tmp == 0)
+                if (tmp == 0 || tmp == _C)
                     return;
                 _C = tmp;
                 UpdateRow(2, tmp);
@@ -62,7 +66,7 @@
             get => _a;
             set
             {
-                if (value <= 0)
+                if (value <= 0 || value == _a)
                     return;
                 _a = value;
                 UpdateRow(3, value);
@@ -75,7 +79,7 @@
             get => _b;
             set
             {
-                if (value <= 0)
+                if (value <= 0 || value == _b)
                     return;
                 _b = value;
                 UpdateRow(4, value);
@@ -88,7 +92,7 @@
             get => _c;
             set
             {
-                if (value <= 0)
+                if (value <= 0 || value == _c)
                     return;
                 _c = value;
                 UpdateRow(5, value);
@@ -101,7 +105,7 @@
             get => _S;
             set
             {
-                if (value <= 0)
+                if (value <= 0 || value == _S)
                     return;
                 _S = value;
                 UpdateRow(6, value);
@@ -114,7 +118,7 @@
             get => _hA;
             set
             {
-                if (value <= 0)
+                if (value <= 0 || value == _hA)
                     return;
                 _hA = value;
                 UpdateRow(7, value);
@@ -127,7 +131,7 @@
             get => _hB;
             set
             {
-                if (value <= 0)
+                if (value <= 0 || value == _hB)
                     return;
                 _hB = value;
                 UpdateRow(8, value);
@@ -140,7 +144,7 @@
             get => _hC;
             set
             {
-                if (value <= 0)
+                if (value <= 0 || value == _hC)
                     return;
                 _hC = value;
                 UpdateRow(9, value);
@@ -153,7 +157,7 @@
             get => _P;
             set
             {
-                if (value <= 0)
+                if (value <= 0 || value == _P)
                     return;
                 _P = value;
                 UpdateRow(10, value);
@@ -166,7 +170,7 @@
             get => _R;
             set
             {
-                if (value <= 0)
+                if (value <= 0 || value == _R)
                     return;
                 _R = value;
                 UpdateRow(11, value);
@@ -179,7 +183,7 @@
             get => _r;
             set
             {
-                if (value <= 0)
+                if (value <= 0 || value == _r)
                     return;
                 _r = value;
                 UpdateRow(12, value);
@@ -198,6 +202,8 @@
                 else if (curr == -1)
                     data[row, i] = 1;
             }
+            if (!isCalculate)
+                root.Add(row);
         }
 
         int TriggerCol(int col)
@@ -233,7 +239,7 @@
             data[1, 13] = data[4, 13] = data[11, 13] = -1;
             data[2, 14] = data[5, 14] = data[11, 14] = -1;
             data[3, 15] = data[4, 15] = data[5, 15] = data[6, 15] = data[11, 15] = -1;
-            data[3, 16] = data[4, 16] = data[5, 16] = data[6, 16] = data[12, 16] = -1;
+            data[6, 16] = data[10, 16] = data[12, 16] = -1;
             data[2, 17] = data[4, 17] = data[7, 17] = -1;
             data[1, 18] = data[5, 18] = data[7, 18] = -1;
             data[2, 19] = data[3, 19] = data[8, 19] = -1;
@@ -250,6 +256,7 @@
         public void Calculate()
         {
             err = false;
+            isCalculate = true;
             bool tryAgain = false;
             for (int col = 0; col < nCol; col++)
             {
@@ -673,29 +680,19 @@
                         {
                             switch (row)
                             {
-                                case 3:
-                                    {
-                                        a = (2 * _S / _r) - _b - _c;
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        b = (2 * _S / _r) - _a - _c;
-                                    }
-                                    break;
-                                case 5:
-                                    {
-                                        c = (2 * _S / _r) - _b - _a;
-                                    }
-                                    break;
                                 case 6:
                                     {
-                                        S = (_a + _b + _c) * _r / 2;
+                                        S = _P * _r / 2;
+                                    }
+                                    break;
+                                case 10:
+                                    {
+                                        P = (2 * _S) / _r;
                                     }
                                     break;
                                 case 12:
                                     {
-                                        r = (2 * _S) / (_a + _b + _c);
+                                        r = (2 * _S) / _P;
                                     }
                                     break;
                             }
@@ -914,6 +911,7 @@
             Debug(this);
             if (tryAgain)
                 Calculate();
+            isCalculate = false;
         }
 
         public static void Debug(SemanticNetworkTriangle semanticNetwork)

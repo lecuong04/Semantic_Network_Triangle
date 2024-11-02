@@ -45,11 +45,15 @@ td, th {
     min-width: 40px;
 }
 
-table, th, td {
+th, td {
     border: 1px solid black;
     border-collapse: collapse;
 }
 
 .navbar-brand {
     margin: 0 auto !important;
+}
+
+.header {
+    background-color: bisque;
 }

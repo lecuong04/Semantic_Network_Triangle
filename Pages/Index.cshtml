@@ -6,7 +6,7 @@
 }
 <div class="row" style="margin-bottom: 20px">
     <div class="col-4">
-        <h3>Các công thức:</h3>
+        <h3 class="mb-3">Các công thức:</h3>
         <ol>
             <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>a</mi><mrow><mi>sin</mi><mfenced><mi>A</mi></mfenced></mrow></mfrac><mo>=</mo><mfrac><mi>b</mi><mrow><mi>sin</mi><mfenced><mi>B</mi></mfenced></mrow></mfrac></math></li>
             <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>b</mi><mrow><mi>sin</mi><mfenced><mi>B</mi></mfenced></mrow></mfrac><mo>=</mo><mfrac><mi>c</mi><mrow><mi>sin</mi><mfenced><mi>C</mi></mfenced></mrow></mfrac></math></li>
@@ -23,8 +23,8 @@
             <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>a</mi><mrow><mi>sin</mi><mfenced><mi>A</mi></mfenced></mrow></mfrac><mo>=</mo><mn>2</mn><mi>R</mi></math></li>
             <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>b</mi><mrow><mi>sin</mi><mfenced><mi>B</mi></mfenced></mrow></mfrac><mo>=</mo><mn>2</mn><mi>R</mi></math></li>
             <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>c</mi><mrow><mi>sin</mi><mfenced><mi>C</mi></mfenced></mrow></mfrac><mo>=</mo><mn>2</mn><mi>R</mi></math></li>
-            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>s</mi><mo>=</mo><mfrac><mrow><mi>a</mi><mi>b</mi><mi>c</mi></mrow><mrow><mn>4</mn><mi>R</mi></mrow></mfrac></math></li>
-            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>s</mi><mo>=</mo><mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi></mrow><mn>2</mn></mfrac><mi>r</mi></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mrow><mi>a</mi><mi>b</mi><mi>c</mi></mrow><mrow><mn>4</mn><mi>R</mi></mrow></mfrac></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mi>p</mi><mo>.</mo><mi>r</mi></math></li>
             <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub><mo>=</mo><mi>b</mi><mo>.</mo><mi>sin</mi><mfenced><mi>C</mi></mfenced></math></li>
             <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub><mo>=</mo><mi>c</mi><mo>.</mo><mi>sin</mi><mfenced><mi>B</mi></mfenced></math></li>
             <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>B</mi></msub><mo>=</mo><mi>a</mi><mo>.</mo><mi>sin</mi><mfenced><mi>C</mi></mfenced></math></li>
@@ -225,6 +225,93 @@
         <div class="col">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb fs-4" style="justify-content:center;">
+                    <li class="breadcrumb-item">Thuộc tính gốc</li>
+                    @if (triangle.History.Keys.Count() == 0)
+                    {
+                        <li class="breadcrumb-item">Rỗng</li>
+                    }
+                    else
+                    {
+                        @foreach (int i in triangle.Root)
+                        {
+                            @switch (i)
+                            {
+                                case 0:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math></li>
+                                        break;
+                                    }
+                                case 1:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math></li>
+                                        break;
+                                    }
+                                case 2:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi></math></li>
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math></li>
+                                        break;
+                                    }
+                                case 4:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math></li>
+                                        break;
+                                    }
+                                case 5:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math></li>
+                                        break;
+                                    }
+                                case 6:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi></math></li>
+                                        break;
+                                    }
+                                case 7:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub></math></li>
+                                        break;
+                                    }
+                                case 8:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>B</mi></msub></math></li>
+                                        break;
+                                    }
+                                case 9:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>C</mi></msub></math></li>
+                                        break;
+                                    }
+                                case 10:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi></math></li>
+                                        break;
+                                    }
+                                case 11:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi></math></li>
+                                        break;
+                                    }
+                                case 12:
+                                    {
+                                        <li class="breadcrumb-item"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></li>
+                                        break;
+                                    }
+                            }
+                        }
+                    }
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb fs-4" style="justify-content:center;">
                     <li class="breadcrumb-item">Công thức</li>
                     @if (triangle.History.Keys.Count() == 0)
                     {
@@ -245,7 +332,7 @@
         <div class="col">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb fs-4" style="justify-content:center;">
-                    <li class="breadcrumb-item">Thuộc tính</li>
+                    <li class="breadcrumb-item">Thuộc tính đã tính</li>
                     @if (triangle.History.Values.Count() == 0)
                     {
                         <li class="breadcrumb-item">Rỗng</li>
@@ -332,83 +419,85 @@
         <div class="col">
             <table>
                 <tr>
-                    <th></th>
+                    <th style="border-top: none;border-left: none;"></th>
                     @for (int i = 1; i <= SemanticNetworkTriangle.nCol; i++)
                     {
-                        <th>(@i)</th>
+                        <th class="header">(@i)</th>
                     }
                 </tr>
                 @for (int i = 0; i < SemanticNetworkTriangle.nRow; i++)
                 {
                     <tr>
-                        @switch (i)
-                        {
-                            case 0:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math></td>
-                                    break;
-                                }
-                            case 1:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math></td>
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi></math></td>
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math></td>
-                                    break;
-                                }
-                            case 4:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math></td>
-                                    break;
-                                }
-                            case 5:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math></td>
-                                    break;
-                                }
-                            case 6:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi></math></td>
-                                    break;
-                                }
-                            case 7:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub></math></td>
-                                    break;
-                                }
-                            case 8:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>B</mi></msub></math></td>
-                                    break;
-                                }
-                            case 9:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>C</mi></msub></math></td>
-                                    break;
-                                }
-                            case 10:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi></math></td>
-                                    break;
-                                }
-                            case 11:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi></math></td>
-                                    break;
-                                }
-                            case 12:
-                                {
-                                    <td><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math></td>
-                                    break;
-                                }
-                        }
+                        <td class="header">
+                            @switch (i)
+                            {
+                                case 0:
+                                    {
+                                        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math>
+                                        break;
+                                    }
+                                case 1:
+                                    {
+                                        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math>
+                                        break;
+                                    }
+                                case 2:
+                                    {
+                                        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi></math>
+                                        break;
+                                    }
+                                case 3:
+                                    {
+                                        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>a</mi></math>
+                                        break;
+                                    }
+                                case 4:
+                                    {
+                                        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>b</mi></math>
+                                        break;
+                                    }
+                                case 5:
+                                    {
+                                        <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>c</mi></math>
+                                        break;
+                                    }
+                                case 6:
+                                    {
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi></math>
+                                        break;
+                                    }
+                                case 7:
+                                    {
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub></math>
+                                        break;
+                                    }
+                                case 8:
+                                    {
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>B</mi></msub></math>
+                                        break;
+                                    }
+                                case 9:
+                                    {
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>C</mi></msub></math>
+                                        break;
+                                    }
+                                case 10:
+                                    {
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi></math>
+                                        break;
+                                    }
+                                case 11:
+                                    {
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>R</mi></math>
+                                        break;
+                                    }
+                                case 12:
+                                    {
+                                    <math xmlns="http://www.w3.org/1998/Math/MathML"><mi>r</mi></math>
+                                        break;
+                                    }
+                            }
+                        </td>
                         @for (int j = 0; j < SemanticNetworkTriangle.nCol; j++)
                         {
                             double data = triangle.Data[i, j];
@@ -421,7 +510,7 @@
                                 int value;
                                 if (triangle.History.TryGetValue(j, out value) && value == i)
                                 {
-                                    <td class="fst-italic fw-bold text-success text-decoration-underline">@data<sup class="text-success-emphasis">@(Array.IndexOf(@triangle.History.Keys.ToArray(), j) + 1)</sup></td>
+                                    <td class="fst-italic fw-bold text-success">@data<sup class="text-success-emphasis">@(Array.IndexOf(@triangle.History.Keys.ToArray(), j) + 1)</sup></td>
                                 }
                                 else
                                 {
