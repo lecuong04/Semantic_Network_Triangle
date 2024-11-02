@@ -42,93 +42,171 @@
             <div class="mb-3 row">
                 <label for="A" class="col-sm-3 col-form-label">Góc A</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="A" name="cA" value="@triangle.A" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="A" name="cA" value="@triangle.A" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('A')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('A')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <label for="B" class="col-sm-3 col-form-label">Góc B</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="B" name="cB" value="@triangle.B" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="B" name="cB" value="@triangle.B" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('B')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('B')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <label for="C" class="col-sm-3 col-form-label">Góc C</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="C" name="cC" value="@triangle.C" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="C" name="cC" value="@triangle.C" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('C')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('C')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <label for="a" class="col-sm-3 col-form-label">Cạnh a</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="a" name="ea" value="@triangle.a" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="a" name="ea" value="@triangle.a" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('a')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('a')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <label for="b" class="col-sm-3 col-form-label">Cạnh b</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="b" name="eb" value="@triangle.b" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="b" name="eb" value="@triangle.b" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('b')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('b')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <label for="c" class="col-sm-3 col-form-label">Cạnh c</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="c" name="ec" value="@triangle.c" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="c" name="ec" value="@triangle.c" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('c')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('c')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <label for="S" class="col-sm-3 col-form-label">Diện tích S</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="S" name="aS" value="@triangle.S" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="S" name="aS" value="@triangle.S" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('S')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('S')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <label for="hA" class="col-sm-3 col-form-label">Chiều cao hA</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="hA" name="hA" value="@triangle.hA" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="hA" name="hA" value="@triangle.hA" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('hA')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('hA')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <label for="hB" class="col-sm-3 col-form-label">Chiều cao hB</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="hB" name="hB" value="@triangle.hB" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="hB" name="hB" value="@triangle.hB" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('hB')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('hB')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <label for="hC" class="col-sm-3 col-form-label">Chiều cao hC</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="hC" name="hC" value="@triangle.hC" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="hC" name="hC" value="@triangle.hC" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('hC')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('hC')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <label for="P" class="col-sm-3 col-form-label">Chu vi P</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="P" name="cP" value="@triangle.P" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="P" name="cP" value="@triangle.P" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('P')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('P')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <label for="R" class="col-sm-3 col-form-label">Bán kính ngoại tiếp R</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="R" name="pR" value="@triangle.R" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="R" name="pR" value="@triangle.R" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('R')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('R')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <label for="r" class="col-sm-3 col-form-label">Bán kính nội tiếp r</label>
                 <div class="col-sm">
-                    <input type="number" class="form-control" id="r" name="iR" value="@triangle.r" min="0" step=any required>
+                    <div class="row">
+                        <div class="col">
+                            <input type="number" class="form-control" id="r" name="iR" value="@triangle.r" min="0" step=any required>
+                        </div>
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('r')"><i class="bi bi-arrow-clockwise"></i></button>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('r')"><i class="bi bi-arrow-clockwise"></i></button>
             </div>
             <div class="mb-3 row">
                 <div class="col">

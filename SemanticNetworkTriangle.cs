@@ -839,7 +839,7 @@
                             {
                                 case 0:
                                     {
-                                        A = Math.Asin(((_b * _b) + (_c * _c) - (_a * _a)) / (2 * _b * _c)) * (180 / Math.PI);
+                                        A = Math.Acos(((_b * _b) + (_c * _c) - (_a * _a)) / (2 * _b * _c)) * (180 / Math.PI);
                                     }
                                     break;
                                 case 3:
@@ -864,7 +864,7 @@
                             {
                                 case 1:
                                     {
-                                        B = Math.Asin(((_a * _a) + (_c * _c) - (_b * _b)) / (2 * _a * _c)) * (180 / Math.PI);
+                                        B = Math.Acos(((_a * _a) + (_c * _c) - (_b * _b)) / (2 * _a * _c)) * (180 / Math.PI);
                                     }
                                     break;
                                 case 3:
@@ -889,7 +889,7 @@
                             {
                                 case 2:
                                     {
-                                        C = Math.Asin(((_a * _a) + (_b * _b) - (_c * _c)) / (2 * _a * _b)) * (180 / Math.PI);
+                                        C = Math.Acos(((_a * _a) + (_b * _b) - (_c * _c)) / (2 * _a * _b)) * (180 / Math.PI);
                                     }
                                     break;
                                 case 3:

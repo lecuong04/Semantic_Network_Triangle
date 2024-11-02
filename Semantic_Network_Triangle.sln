@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Semantic_Network_Triangle", "Semantic_Network_Triangle.csproj", "{A33B41C2-8FFF-471D-9EFF-67461F025CA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semantic_Network_Triangle", "Semantic_Network_Triangle.csproj", "{A33B41C2-8FFF-471D-9EFF-67461F025CA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
