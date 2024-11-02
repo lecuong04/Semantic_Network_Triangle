@@ -4,162 +4,161 @@
     ViewData["Title"] = "Trang chủ";
     SemanticNetworkTriangle triangle = Model.Triangle;
 }
-<div class="container">
-    <div class="row" style="margin-bottom: 20px">
-        <div class="col-4">
-            <h3>Các công thức:</h3>
-            <ol>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>a</mi><mrow><mi>sin</mi><mfenced><mi>A</mi></mfenced></mrow></mfrac><mo>=</mo><mfrac><mi>b</mi><mrow><mi>sin</mi><mfenced><mi>B</mi></mfenced></mrow></mfrac></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>b</mi><mrow><mi>sin</mi><mfenced><mi>B</mi></mfenced></mrow></mfrac><mo>=</mo><mfrac><mi>c</mi><mrow><mi>sin</mi><mfenced><mi>C</mi></mfenced></mrow></mfrac></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>a</mi><mrow><mi>sin</mi><mfenced><mi>A</mi></mfenced></mrow></mfrac><mo>=</mo><mfrac><mi>c</mi><mrow><mi>sin</mi><mfenced><mi>C</mi></mfenced></mrow></mfrac></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><msqrt><mrow><mi>p</mi><mo>(</mo><mi>p</mi><mo>-</mo><mi>a</mi><mo>)</mo><mo>(</mo><mi>p</mi><mo>-</mo><mi>b</mi><mo>)</mo><mo>(</mo><mi>p</mi><mo>-</mo><mi>c</mi><mo>)</mo></mrow></msqrt></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mi>a</mi><mn>2</mn></mfrac><msub><mi>h</mi><mi>A</mi></msub></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mi>b</mi><mn>2</mn></mfrac><msub><mi>h</mi><mi>B</mi></msub></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mi>c</mi><mn>2</mn></mfrac><msub><mi>h</mi><mi>C</mi></msub></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo>+</mo><mi>B</mi><mo>+</mo><mi>C</mi><mo>=</mo><mn>180</mn></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>a</mi><mo>.</mo><mi>b</mi><mo>.</mo><mi>sin</mi><mfenced><mi>C</mi></mfenced></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>a</mi><mo>.</mo><mi>c</mi><mo>.</mo><mi>sin</mi><mfenced><mi>B</mi></mfenced></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>b</mi><mo>.</mo><mi>c</mi><mo>.</mo><mi>sin</mi><mfenced><mi>A</mi></mfenced></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>a</mi><mrow><mi>sin</mi><mfenced><mi>A</mi></mfenced></mrow></mfrac><mo>=</mo><mn>2</mn><mi>R</mi></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>b</mi><mrow><mi>sin</mi><mfenced><mi>B</mi></mfenced></mrow></mfrac><mo>=</mo><mn>2</mn><mi>R</mi></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>c</mi><mrow><mi>sin</mi><mfenced><mi>C</mi></mfenced></mrow></mfrac><mo>=</mo><mn>2</mn><mi>R</mi></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>s</mi><mo>=</mo><mfrac><mrow><mi>a</mi><mi>b</mi><mi>c</mi></mrow><mrow><mn>4</mn><mi>R</mi></mrow></mfrac></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>s</mi><mo>=</mo><mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi></mrow><mn>2</mn></mfrac><mi>r</mi></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub><mo>=</mo><mi>b</mi><mo>.</mo><mi>sin</mi><mfenced><mi>C</mi></mfenced></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub><mo>=</mo><mi>c</mi><mo>.</mo><mi>sin</mi><mfenced><mi>B</mi></mfenced></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>B</mi></msub><mo>=</mo><mi>a</mi><mo>.</mo><mi>sin</mi><mfenced><mi>C</mi></mfenced></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>B</mi></msub><mo>=</mo><mi>c</mi><mo>.</mo><mi>sin</mi><mfenced><mi>A</mi></mfenced></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>C</mi></msub><mo>=</mo><mi>b</mi><mo>.</mo><mi>sin</mi><mfenced><mi>A</mi></mfenced></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>C</mi></msub><mo>=</mo><mi>c</mi><mo>.</mo><mi>sin</mi><mfenced><mi>B</mi></mfenced></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>cos</mi><mfenced><mi>A</mi></mfenced><mo>=</mo><mfrac><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><msup><mi>c</mi><mn>2</mn></msup><mo>-</mo><msup><mi>a</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>b</mi><mi>c</mi></mrow></mfrac></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>cos</mi><mfenced><mi>B</mi></mfenced><mo>=</mo><mfrac><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>c</mi><mn>2</mn></msup><mo>-</mo><msup><mi>b</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>a</mi><mi>c</mi></mrow></mfrac></math></li>
-                <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>cos</mi><mfenced><mi>C</mi></mfenced><mo>=</mo><mfrac><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>-</mo><msup><mi>c</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>a</mi><mi>b</mi></mrow></mfrac></math></li>
-            </ol>
-        </div>
-        <div class="col-8" style="border-left: 2px solid rgb(180, 180, 180);">
-            <form method="post">
-                <h3 class="text-center mb-3">Thông tin tam giác</h3>
-                <div class="mb-3 row">
-                    <label for="A" class="col-sm-3 col-form-label">Góc A</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="A" name="cA" value="@triangle.A" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('A')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <label for="B" class="col-sm-3 col-form-label">Góc B</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="B" name="cB" value="@triangle.B" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('B')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <label for="C" class="col-sm-3 col-form-label">Góc C</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="C" name="cC" value="@triangle.C" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('C')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <label for="a" class="col-sm-3 col-form-label">Cạnh a</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="a" name="ea" value="@triangle.a" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('a')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <label for="b" class="col-sm-3 col-form-label">Cạnh b</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="b" name="eb" value="@triangle.b" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('b')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <label for="c" class="col-sm-3 col-form-label">Cạnh c</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="c" name="ec" value="@triangle.c" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('c')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <label for="S" class="col-sm-3 col-form-label">Diện tích S</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="S" name="aS" value="@triangle.S" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('S')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <label for="hA" class="col-sm-3 col-form-label">Chiều cao hA</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="hA" name="hA" value="@triangle.hA" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('hA')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <label for="hB" class="col-sm-3 col-form-label">Chiều cao hB</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="hB" name="hB" value="@triangle.hB" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('hB')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <label for="hC" class="col-sm-3 col-form-label">Chiều cao hC</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="hC" name="hC" value="@triangle.hC" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('hC')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <label for="P" class="col-sm-3 col-form-label">Chu vi P</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="P" name="cP" value="@triangle.P" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('P')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <label for="R" class="col-sm-3 col-form-label">Bán kính ngoại tiếp R</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="R" name="pR" value="@triangle.R" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('R')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <label for="r" class="col-sm-3 col-form-label">Bán kính nội tiếp r</label>
-                    <div class="col-sm">
-                        <input type="number" class="form-control" id="r" name="iR" value="@triangle.r" min="0" step=any required>
-                    </div>
-                    <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('r')"><i class="bi bi-arrow-clockwise"></i></button>
-                </div>
-                <div class="mb-3 row">
-                    <div class="col">
-                        <button class="btn btn-primary" type="submit" asp-page-handler="Submit">Tính toán</button>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-secondary" type="submit" asp-page-handler="Reset">Làm mới</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+<div class="row" style="margin-bottom: 20px">
+    <div class="col-4">
+        <h3>Các công thức:</h3>
+        <ol>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>a</mi><mrow><mi>sin</mi><mfenced><mi>A</mi></mfenced></mrow></mfrac><mo>=</mo><mfrac><mi>b</mi><mrow><mi>sin</mi><mfenced><mi>B</mi></mfenced></mrow></mfrac></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>b</mi><mrow><mi>sin</mi><mfenced><mi>B</mi></mfenced></mrow></mfrac><mo>=</mo><mfrac><mi>c</mi><mrow><mi>sin</mi><mfenced><mi>C</mi></mfenced></mrow></mfrac></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>a</mi><mrow><mi>sin</mi><mfenced><mi>A</mi></mfenced></mrow></mfrac><mo>=</mo><mfrac><mi>c</mi><mrow><mi>sin</mi><mfenced><mi>C</mi></mfenced></mrow></mfrac></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><msqrt><mrow><mi>p</mi><mo>(</mo><mi>p</mi><mo>-</mo><mi>a</mi><mo>)</mo><mo>(</mo><mi>p</mi><mo>-</mo><mi>b</mi><mo>)</mo><mo>(</mo><mi>p</mi><mo>-</mo><mi>c</mi><mo>)</mo></mrow></msqrt></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mi>a</mi><mn>2</mn></mfrac><msub><mi>h</mi><mi>A</mi></msub></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mi>b</mi><mn>2</mn></mfrac><msub><mi>h</mi><mi>B</mi></msub></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mi>c</mi><mn>2</mn></mfrac><msub><mi>h</mi><mi>C</mi></msub></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mo>+</mo><mi>B</mi><mo>+</mo><mi>C</mi><mo>=</mo><mn>180</mn></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>a</mi><mo>.</mo><mi>b</mi><mo>.</mo><mi>sin</mi><mfenced><mi>C</mi></mfenced></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>a</mi><mo>.</mo><mi>c</mi><mo>.</mo><mi>sin</mi><mfenced><mi>B</mi></mfenced></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>S</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>b</mi><mo>.</mo><mi>c</mi><mo>.</mo><mi>sin</mi><mfenced><mi>A</mi></mfenced></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>P</mi><mo>=</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>a</mi><mrow><mi>sin</mi><mfenced><mi>A</mi></mfenced></mrow></mfrac><mo>=</mo><mn>2</mn><mi>R</mi></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>b</mi><mrow><mi>sin</mi><mfenced><mi>B</mi></mfenced></mrow></mfrac><mo>=</mo><mn>2</mn><mi>R</mi></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mfrac><mi>c</mi><mrow><mi>sin</mi><mfenced><mi>C</mi></mfenced></mrow></mfrac><mo>=</mo><mn>2</mn><mi>R</mi></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>s</mi><mo>=</mo><mfrac><mrow><mi>a</mi><mi>b</mi><mi>c</mi></mrow><mrow><mn>4</mn><mi>R</mi></mrow></mfrac></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>s</mi><mo>=</mo><mfrac><mrow><mi>a</mi><mo>+</mo><mi>b</mi><mo>+</mo><mi>c</mi></mrow><mn>2</mn></mfrac><mi>r</mi></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub><mo>=</mo><mi>b</mi><mo>.</mo><mi>sin</mi><mfenced><mi>C</mi></mfenced></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>A</mi></msub><mo>=</mo><mi>c</mi><mo>.</mo><mi>sin</mi><mfenced><mi>B</mi></mfenced></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>B</mi></msub><mo>=</mo><mi>a</mi><mo>.</mo><mi>sin</mi><mfenced><mi>C</mi></mfenced></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>B</mi></msub><mo>=</mo><mi>c</mi><mo>.</mo><mi>sin</mi><mfenced><mi>A</mi></mfenced></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>C</mi></msub><mo>=</mo><mi>b</mi><mo>.</mo><mi>sin</mi><mfenced><mi>A</mi></mfenced></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>h</mi><mi>C</mi></msub><mo>=</mo><mi>c</mi><mo>.</mo><mi>sin</mi><mfenced><mi>B</mi></mfenced></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>cos</mi><mfenced><mi>A</mi></mfenced><mo>=</mo><mfrac><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><msup><mi>c</mi><mn>2</mn></msup><mo>-</mo><msup><mi>a</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>b</mi><mi>c</mi></mrow></mfrac></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>cos</mi><mfenced><mi>B</mi></mfenced><mo>=</mo><mfrac><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>c</mi><mn>2</mn></msup><mo>-</mo><msup><mi>b</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>a</mi><mi>c</mi></mrow></mfrac></math></li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>cos</mi><mfenced><mi>C</mi></mfenced><mo>=</mo><mfrac><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>-</mo><msup><mi>c</mi><mn>2</mn></msup></mrow><mrow><mn>2</mn><mi>a</mi><mi>b</mi></mrow></mfrac></math></li>
+        </ol>
     </div>
-    <div class="row">
-        <div class="col">
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                <ol class="breadcrumb fs-4" style="justify-content:center;">
-                    <li class="breadcrumb-item">Lịch sử</li>
-                    @if (triangle.History.Count == 0)
+    <div class="col-8" style="border-left: 2px solid rgb(180, 180, 180);">
+        <form method="post">
+            <h3 class="text-center mb-3">Thông tin tam giác</h3>
+            <div class="mb-3 row">
+                <label for="A" class="col-sm-3 col-form-label">Góc A</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="A" name="cA" value="@triangle.A" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('A')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <label for="B" class="col-sm-3 col-form-label">Góc B</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="B" name="cB" value="@triangle.B" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('B')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <label for="C" class="col-sm-3 col-form-label">Góc C</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="C" name="cC" value="@triangle.C" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('C')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <label for="a" class="col-sm-3 col-form-label">Cạnh a</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="a" name="ea" value="@triangle.a" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('a')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <label for="b" class="col-sm-3 col-form-label">Cạnh b</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="b" name="eb" value="@triangle.b" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('b')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <label for="c" class="col-sm-3 col-form-label">Cạnh c</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="c" name="ec" value="@triangle.c" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('c')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <label for="S" class="col-sm-3 col-form-label">Diện tích S</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="S" name="aS" value="@triangle.S" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('S')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <label for="hA" class="col-sm-3 col-form-label">Chiều cao hA</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="hA" name="hA" value="@triangle.hA" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('hA')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <label for="hB" class="col-sm-3 col-form-label">Chiều cao hB</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="hB" name="hB" value="@triangle.hB" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('hB')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <label for="hC" class="col-sm-3 col-form-label">Chiều cao hC</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="hC" name="hC" value="@triangle.hC" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('hC')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <label for="P" class="col-sm-3 col-form-label">Chu vi P</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="P" name="cP" value="@triangle.P" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('P')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <label for="R" class="col-sm-3 col-form-label">Bán kính ngoại tiếp R</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="R" name="pR" value="@triangle.R" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('R')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <label for="r" class="col-sm-3 col-form-label">Bán kính nội tiếp r</label>
+                <div class="col-sm">
+                    <input type="number" class="form-control" id="r" name="iR" value="@triangle.r" min="0" step=any required>
+                </div>
+                <button type="button" class="btn btn-primary col-auto reset" title="Đặt lại số" onclick="resetInput('r')"><i class="bi bi-arrow-clockwise"></i></button>
+            </div>
+            <div class="mb-3 row">
+                <div class="col">
+                    <button class="btn btn-primary" type="submit" asp-page-handler="Submit">Tính toán</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-secondary" type="submit" asp-page-handler="Reset">Làm mới</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb fs-4" style="justify-content:center;">
+                <li class="breadcrumb-item">Lịch sử</li>
+                @if (triangle.History.Count == 0)
+                {
+                    <li class="breadcrumb-item">Rỗng</li>
+                }
+                else
+                {
+                    @foreach (int i in triangle.History)
                     {
-                        <li class="breadcrumb-item">Rỗng</li>
-                    } else
-                    {
-                        @foreach (int i in triangle.History)
-                        {
-                            <li class="breadcrumb-item">@(i + 1)</li>
-                        }
+                        <li class="breadcrumb-item">@(i + 1)</li>
                     }
-                </ol>
-            </nav>
-        </div>
+                }
+            </ol>
+        </nav>
     </div>
 </div>
 <div class="row">
@@ -250,9 +249,12 @@
                         {
                             <td>@data</td>
                         }
-                        else
+                        else if (data == 1)
                         {
                             <td class="fst-italic fw-bold text-primary">@data</td>
+                        } else
+                        {
+                            <td class="fst-italic fw-bold text-danger">@data</td>
                         }
                     }
                 </tr>
