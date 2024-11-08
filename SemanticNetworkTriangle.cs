@@ -2,6 +2,17 @@
 {
     public class SemanticNetworkTriangle
     {
+        struct Pair {
+            int Key;
+            int Value;
+
+            public Pair(int key, int value)
+            {
+                Key = key;
+                Value = value;
+            }
+        }
+
         public static readonly int nCol = 26;
         public static readonly int nRow = 13;
 
@@ -15,8 +26,18 @@
         List<int> root = new List<int>();
         public List<int> Root => new List<int>(root);
 
+        HashSet<Pair> border = new HashSet<Pair>();
+
         int[,] data = new int[nRow, nCol];
         public int[,] Data => (int[,])data.Clone();
+
+        static bool IsInvalidValue(double value, double self)
+        {
+            if (value <= 0 || double.IsNaN(value) || double.IsInfinity(value) || value == self)
+                return true;
+            else
+                return false;
+        }
 
         double _A = 0;
         public double A
@@ -25,7 +46,7 @@
             set
             {
                 double tmp = value % 360;
-                if (tmp == 0 || tmp == _A)
+                if (IsInvalidValue(tmp, _A))
                     return;
                 _A = tmp;
                 UpdateRow(0, tmp);
@@ -39,7 +60,7 @@
             set
             {
                 double tmp = value % 360;
-                if (tmp == 0 || tmp == _B)
+                if (IsInvalidValue(tmp, _B))
                     return;
                 _B = tmp;
                 UpdateRow(1, tmp);
@@ -53,7 +74,7 @@
             set
             {
                 double tmp = value % 360;
-                if (tmp == 0 || tmp == _C)
+                if (IsInvalidValue(tmp, _C))
                     return;
                 _C = tmp;
                 UpdateRow(2, tmp);
@@ -66,7 +87,7 @@
             get => _a;
             set
             {
-                if (value <= 0 || value == _a)
+                if (IsInvalidValue(value, _a))
                     return;
                 _a = value;
                 UpdateRow(3, value);
@@ -79,7 +100,7 @@
             get => _b;
             set
             {
-                if (value <= 0 || value == _b)
+                if (IsInvalidValue(value, _b))
                     return;
                 _b = value;
                 UpdateRow(4, value);
@@ -92,7 +113,7 @@
             get => _c;
             set
             {
-                if (value <= 0 || value == _c)
+                if (IsInvalidValue(value, _c))
                     return;
                 _c = value;
                 UpdateRow(5, value);
@@ -105,7 +126,7 @@
             get => _S;
             set
             {
-                if (value <= 0 || value == _S)
+                if (IsInvalidValue(value, _S))
                     return;
                 _S = value;
                 UpdateRow(6, value);
@@ -118,7 +139,7 @@
             get => _hA;
             set
             {
-                if (value <= 0 || value == _hA)
+                if (IsInvalidValue(value, _hA))
                     return;
                 _hA = value;
                 UpdateRow(7, value);
@@ -131,7 +152,7 @@
             get => _hB;
             set
             {
-                if (value <= 0 || value == _hB)
+                if (IsInvalidValue(value, _hB))
                     return;
                 _hB = value;
                 UpdateRow(8, value);
@@ -144,7 +165,7 @@
             get => _hC;
             set
             {
-                if (value <= 0 || value == _hC)
+                if (IsInvalidValue(value, _hC))
                     return;
                 _hC = value;
                 UpdateRow(9, value);
@@ -157,7 +178,7 @@
             get => _P;
             set
             {
-                if (value <= 0 || value == _P)
+                if (IsInvalidValue(value, _P))
                     return;
                 _P = value;
                 UpdateRow(10, value);
@@ -170,7 +191,7 @@
             get => _R;
             set
             {
-                if (value <= 0 || value == _R)
+                if (IsInvalidValue(value, _R))
                     return;
                 _R = value;
                 UpdateRow(11, value);
@@ -183,7 +204,7 @@
             get => _r;
             set
             {
-                if (value <= 0 || value == _r)
+                if (IsInvalidValue(value, _r))
                     return;
                 _r = value;
                 UpdateRow(12, value);
@@ -260,11 +281,11 @@
             bool tryAgain = false;
             for (int col = 0; col < nCol; col++)
             {
-                if (history.Keys.Contains(col))
-                    continue;
+                System.Diagnostics.Debug.WriteLine($"Select col: {col}");
                 int row = TriggerCol(col);
                 if (row == -1)
                     continue;
+                System.Diagnostics.Debug.WriteLine($"Select row: {row}");
                 if (_a != 0 && _b != 0 && _c != 0)
                     if (!(_a < _b + _c && _b < _a + _c && _c < _a + _b))
                     {
@@ -272,644 +293,663 @@
                         break;
                     }
                 tryAgain = true;
-                switch (col)
+                try
                 {
-                    case 0:
-                        {
-                            switch (row)
+                    switch (col)
+                    {
+                        case 0:
                             {
-                                case 0:
-                                    {
-                                        A = Math.Asin(Math.Sin(DegreeToRadian(_B)) * _a / _b) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 1:
-                                    {
-                                        B = Math.Asin(Math.Sin(DegreeToRadian(_A)) * _b / _a) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 3:
-                                    {
-                                        a = _b * Math.Sin(DegreeToRadian(_A)) / Math.Sin(DegreeToRadian(_B));
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        b = _a * Math.Sin(DegreeToRadian(_B)) / Math.Sin(DegreeToRadian(_A));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 0:
+                                        {
+                                            A = Math.Asin(Math.Sin(DegreeToRadian(_B)) * _a / _b) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 1:
+                                        {
+                                            B = Math.Asin(Math.Sin(DegreeToRadian(_A)) * _b / _a) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 3:
+                                        {
+                                            a = _b * Math.Sin(DegreeToRadian(_A)) / Math.Sin(DegreeToRadian(_B));
+                                        }
+                                        break;
+                                    case 4:
+                                        {
+                                            b = _a * Math.Sin(DegreeToRadian(_B)) / Math.Sin(DegreeToRadian(_A));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 1:
-                        {
-                            switch (row)
+                            break;
+                        case 1:
                             {
-                                case 1:
-                                    {
-                                        B = Math.Asin(Math.Sin(DegreeToRadian(_C)) * _b / _c) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 2:
-                                    {
-                                        C = Math.Asin(Math.Sin(DegreeToRadian(_B)) * _c / _b) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        b = _c * Math.Sin(DegreeToRadian(_B)) / Math.Sin(DegreeToRadian(_C));
-                                    }
-                                    break;
-                                case 5:
-                                    {
-                                        c = _b * Math.Sin(DegreeToRadian(_C)) / Math.Sin(DegreeToRadian(_B));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 1:
+                                        {
+                                            B = Math.Asin(Math.Sin(DegreeToRadian(_C)) * _b / _c) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 2:
+                                        {
+                                            C = Math.Asin(Math.Sin(DegreeToRadian(_B)) * _c / _b) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 4:
+                                        {
+                                            b = _c * Math.Sin(DegreeToRadian(_B)) / Math.Sin(DegreeToRadian(_C));
+                                        }
+                                        break;
+                                    case 5:
+                                        {
+                                            c = _b * Math.Sin(DegreeToRadian(_C)) / Math.Sin(DegreeToRadian(_B));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 2:
-                        {
-                            switch (row)
+                            break;
+                        case 2:
                             {
-                                case 0:
-                                    {
-                                        A = Math.Asin(Math.Sin(DegreeToRadian(_C)) * _a / _c) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 2:
-                                    {
-                                        C = Math.Asin(Math.Sin(DegreeToRadian(_A)) * _c / _a) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 3:
-                                    {
-                                        a = _c * Math.Sin(DegreeToRadian(_A)) / Math.Sin(DegreeToRadian(_C));
-                                    }
-                                    break;
-                                case 5:
-                                    {
-                                        c = _a * Math.Sin(DegreeToRadian(_C)) / Math.Sin(DegreeToRadian(_A));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 0:
+                                        {
+                                            A = Math.Asin(Math.Sin(DegreeToRadian(_C)) * _a / _c) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 2:
+                                        {
+                                            C = Math.Asin(Math.Sin(DegreeToRadian(_A)) * _c / _a) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 3:
+                                        {
+                                            a = _c * Math.Sin(DegreeToRadian(_A)) / Math.Sin(DegreeToRadian(_C));
+                                        }
+                                        break;
+                                    case 5:
+                                        {
+                                            c = _a * Math.Sin(DegreeToRadian(_C)) / Math.Sin(DegreeToRadian(_A));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 3:
-                        {
-                            switch (row)
+                            break;
+                        case 3:
                             {
-                                case 3:
-                                    {
-                                        continue;
-                                    }
-                                case 4:
-                                    {
-                                        continue;
-                                    }
+                                switch (row)
+                                {
+                                    case 3:
+                                        {
+                                            if (!border.Add(new Pair(row, col))) throw new Exception();
+                                            continue;
+                                        }
+                                    case 4:
+                                        {
+                                            if (!border.Add(new Pair(row, col))) throw new Exception();
+                                            continue;
+                                        }
 
-                                case 5:
-                                    {
-                                        continue;
-                                    }
-                                case 6:
-                                    {
-                                        double p = (_a + _b + _c) / 2;
-                                        S = Math.Sqrt(p * (p - _a) * (p - _b) * (p - _c));
-                                    }
-                                    break;
+                                    case 5:
+                                        {
+                                            if (!border.Add(new Pair(row, col))) throw new Exception();
+                                            continue;
+                                        }
+                                    case 6:
+                                        {
+                                            double p = (_a + _b + _c) / 2;
+                                            S = Math.Sqrt(p * (p - _a) * (p - _b) * (p - _c));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 4:
-                        {
-                            switch (row)
+                            break;
+                        case 4:
                             {
-                                case 3:
-                                    {
-                                        a = 2 * _S / _hA;
-                                    }
-                                    break;
-                                case 6:
-                                    {
-                                        S = _hA / 2 * _a;
-                                    }
-                                    break;
-                                case 7:
-                                    {
-                                        hA = 2 * _S / _a;
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 3:
+                                        {
+                                            a = 2 * _S / _hA;
+                                        }
+                                        break;
+                                    case 6:
+                                        {
+                                            S = _hA / 2 * _a;
+                                        }
+                                        break;
+                                    case 7:
+                                        {
+                                            hA = 2 * _S / _a;
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 5:
-                        {
-                            switch (row)
+                            break;
+                        case 5:
                             {
-                                case 4:
-                                    {
-                                        b = 2 * _S / _hB;
-                                    }
-                                    break;
-                                case 6:
-                                    {
-                                        S = _hB / 2 * _b;
-                                    }
-                                    break;
-                                case 8:
-                                    {
-                                        hB = 2 * _S / _b;
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 4:
+                                        {
+                                            b = 2 * _S / _hB;
+                                        }
+                                        break;
+                                    case 6:
+                                        {
+                                            S = _hB / 2 * _b;
+                                        }
+                                        break;
+                                    case 8:
+                                        {
+                                            hB = 2 * _S / _b;
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 6:
-                        {
-                            switch (row)
+                            break;
+                        case 6:
                             {
-                                case 5:
-                                    {
-                                        c = 2 * _S / _hC;
-                                    }
-                                    break;
-                                case 6:
-                                    {
-                                        S = _hC / 2 * _c;
-                                    }
-                                    break;
-                                case 9:
-                                    {
-                                        hC = 2 * _S / _c;
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 5:
+                                        {
+                                            c = 2 * _S / _hC;
+                                        }
+                                        break;
+                                    case 6:
+                                        {
+                                            S = _hC / 2 * _c;
+                                        }
+                                        break;
+                                    case 9:
+                                        {
+                                            hC = 2 * _S / _c;
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 7:
-                        {
-                            switch (row)
+                            break;
+                        case 7:
                             {
-                                case 0:
-                                    {
-                                        A = 180 - _B - _C;
-                                    }
-                                    break;
-                                case 1:
-                                    {
-                                        B = 180 - _A - _C;
-                                    }
-                                    break;
-                                case 2:
-                                    {
-                                        C = 180 - _B - _A;
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 0:
+                                        {
+                                            A = 180 - _B - _C;
+                                        }
+                                        break;
+                                    case 1:
+                                        {
+                                            B = 180 - _A - _C;
+                                        }
+                                        break;
+                                    case 2:
+                                        {
+                                            C = 180 - _B - _A;
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 8:
-                        {
-                            switch (row)
+                            break;
+                        case 8:
                             {
-                                case 2:
-                                    {
-                                        C = Math.Asin(2 * _S / (_a * _b)) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 3:
-                                    {
-                                        a = 2 * _S / (_b * Math.Sin(DegreeToRadian(_C)));
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        b = 2 * _S / (_a * Math.Sin(DegreeToRadian(_C))); ;
-                                    }
-                                    break;
-                                case 6:
-                                    {
-                                        S = 0.5 * _a * _b * Math.Sin(DegreeToRadian(_C));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 2:
+                                        {
+                                            C = Math.Asin(2 * _S / (_a * _b)) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 3:
+                                        {
+                                            a = 2 * _S / (_b * Math.Sin(DegreeToRadian(_C)));
+                                        }
+                                        break;
+                                    case 4:
+                                        {
+                                            b = 2 * _S / (_a * Math.Sin(DegreeToRadian(_C))); ;
+                                        }
+                                        break;
+                                    case 6:
+                                        {
+                                            S = 0.5 * _a * _b * Math.Sin(DegreeToRadian(_C));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 9:
-                        {
-                            switch (row)
+                            break;
+                        case 9:
                             {
-                                case 1:
-                                    {
-                                        B = Math.Asin(2 * _S / (_c * _a)) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 3:
-                                    {
-                                        a = 2 * _S / (_c * Math.Sin(DegreeToRadian(_B)));
-                                    }
-                                    break;
-                                case 5:
-                                    {
-                                        c = 2 * _S / (_a * Math.Sin(DegreeToRadian(_B)));
-                                    }
-                                    break;
-                                case 6:
-                                    {
-                                        S = 0.5 * _a * _c * Math.Sin(DegreeToRadian(_B));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 1:
+                                        {
+                                            B = Math.Asin(2 * _S / (_c * _a)) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 3:
+                                        {
+                                            a = 2 * _S / (_c * Math.Sin(DegreeToRadian(_B)));
+                                        }
+                                        break;
+                                    case 5:
+                                        {
+                                            c = 2 * _S / (_a * Math.Sin(DegreeToRadian(_B)));
+                                        }
+                                        break;
+                                    case 6:
+                                        {
+                                            S = 0.5 * _a * _c * Math.Sin(DegreeToRadian(_B));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 10:
-                        {
-                            switch (row)
+                            break;
+                        case 10:
                             {
-                                case 0:
-                                    {
-                                        A = Math.Asin(2 * _S / (_c * _b)) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        b = 2 * _S / (_c * Math.Sin(DegreeToRadian(_A)));
-                                    }
-                                    break;
-                                case 5:
-                                    {
-                                        c = 2 * _S / (_b * Math.Sin(DegreeToRadian(_A)));
-                                    }
-                                    break;
-                                case 6:
-                                    {
-                                        S = 0.5 * _b * _c * Math.Sin(DegreeToRadian(_A));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 0:
+                                        {
+                                            A = Math.Asin(2 * _S / (_c * _b)) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 4:
+                                        {
+                                            b = 2 * _S / (_c * Math.Sin(DegreeToRadian(_A)));
+                                        }
+                                        break;
+                                    case 5:
+                                        {
+                                            c = 2 * _S / (_b * Math.Sin(DegreeToRadian(_A)));
+                                        }
+                                        break;
+                                    case 6:
+                                        {
+                                            S = 0.5 * _b * _c * Math.Sin(DegreeToRadian(_A));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 11:
-                        {
-                            switch (row)
+                            break;
+                        case 11:
                             {
-                                case 3:
-                                    {
-                                        a = _P - _b - _c;
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        b = _P - _a - _c;
-                                    }
-                                    break;
-                                case 5:
-                                    {
-                                        c = _P - _a - _b;
-                                    }
-                                    break;
-                                case 10:
-                                    {
-                                        P = _a + _b + _c;
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 3:
+                                        {
+                                            a = _P - _b - _c;
+                                        }
+                                        break;
+                                    case 4:
+                                        {
+                                            b = _P - _a - _c;
+                                        }
+                                        break;
+                                    case 5:
+                                        {
+                                            c = _P - _a - _b;
+                                        }
+                                        break;
+                                    case 10:
+                                        {
+                                            P = _a + _b + _c;
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 12:
-                        {
-                            switch (row)
+                            break;
+                        case 12:
                             {
-                                case 0:
-                                    {
-                                        A = Math.Asin(_a / (2 * _R)) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 3:
-                                    {
-                                        a = 2 * _R * Math.Sin(DegreeToRadian(_A));
-                                    }
-                                    break;
-                                case 11:
-                                    {
-                                        R = _a / (2 * Math.Sin(DegreeToRadian(_A)));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 0:
+                                        {
+                                            A = Math.Asin(_a / (2 * _R)) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 3:
+                                        {
+                                            a = 2 * _R * Math.Sin(DegreeToRadian(_A));
+                                        }
+                                        break;
+                                    case 11:
+                                        {
+                                            R = _a / (2 * Math.Sin(DegreeToRadian(_A)));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 13:
-                        {
-                            switch (row)
+                            break;
+                        case 13:
                             {
-                                case 1:
-                                    {
-                                        B = Math.Asin(_b / (2 * _R)) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        b = 2 * _R * Math.Sin(DegreeToRadian(_B));
-                                    }
-                                    break;
-                                case 11:
-                                    {
-                                        R = _b / (2 * Math.Sin(DegreeToRadian(_B)));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 1:
+                                        {
+                                            B = Math.Asin(_b / (2 * _R)) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 4:
+                                        {
+                                            b = 2 * _R * Math.Sin(DegreeToRadian(_B));
+                                        }
+                                        break;
+                                    case 11:
+                                        {
+                                            R = _b / (2 * Math.Sin(DegreeToRadian(_B)));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 14:
-                        {
-                            switch (row)
+                            break;
+                        case 14:
                             {
-                                case 2:
-                                    {
-                                        C = Math.Asin(_c / (2 * _R)) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 5:
-                                    {
-                                        c = 2 * _R * Math.Sin(DegreeToRadian(_C));
-                                    }
-                                    break;
-                                case 11:
-                                    {
-                                        R = _c / (2 * Math.Sin(DegreeToRadian(_C)));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 2:
+                                        {
+                                            C = Math.Asin(_c / (2 * _R)) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 5:
+                                        {
+                                            c = 2 * _R * Math.Sin(DegreeToRadian(_C));
+                                        }
+                                        break;
+                                    case 11:
+                                        {
+                                            R = _c / (2 * Math.Sin(DegreeToRadian(_C)));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 15:
-                        {
-                            switch (row)
+                            break;
+                        case 15:
                             {
-                                case 3:
-                                    {
-                                        a = 4 * _S * _R / (_b * _c);
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        b = 4 * _S * _R / (_a * _c);
-                                    }
-                                    break;
-                                case 5:
-                                    {
-                                        c = 4 * _S * _R / (_b * _a);
-                                    }
-                                    break;
-                                case 6:
-                                    {
-                                        S = _a * _b * _c / (4 * _R);
-                                    }
-                                    break;
-                                case 11:
-                                    {
-                                        R = _a * _b * _c / (4 * _S);
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 3:
+                                        {
+                                            a = 4 * _S * _R / (_b * _c);
+                                        }
+                                        break;
+                                    case 4:
+                                        {
+                                            b = 4 * _S * _R / (_a * _c);
+                                        }
+                                        break;
+                                    case 5:
+                                        {
+                                            c = 4 * _S * _R / (_b * _a);
+                                        }
+                                        break;
+                                    case 6:
+                                        {
+                                            S = _a * _b * _c / (4 * _R);
+                                        }
+                                        break;
+                                    case 11:
+                                        {
+                                            R = _a * _b * _c / (4 * _S);
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 16:
-                        {
-                            switch (row)
+                            break;
+                        case 16:
                             {
-                                case 6:
-                                    {
-                                        S = _P * _r / 2;
-                                    }
-                                    break;
-                                case 10:
-                                    {
-                                        P = (2 * _S) / _r;
-                                    }
-                                    break;
-                                case 12:
-                                    {
-                                        r = (2 * _S) / _P;
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 6:
+                                        {
+                                            S = _P * _r / 2;
+                                        }
+                                        break;
+                                    case 10:
+                                        {
+                                            P = (2 * _S) / _r;
+                                        }
+                                        break;
+                                    case 12:
+                                        {
+                                            r = (2 * _S) / _P;
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 17:
-                        {
-                            switch (row)
+                            break;
+                        case 17:
                             {
-                                case 2:
-                                    {
-                                        C = Math.Asin(_hA / _b) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        b = _hA / Math.Sin(DegreeToRadian(_C));
-                                    }
-                                    break;
-                                case 7:
-                                    {
-                                        hA = _b * Math.Sin(DegreeToRadian(_C));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 2:
+                                        {
+                                            C = Math.Asin(_hA / _b) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 4:
+                                        {
+                                            b = _hA / Math.Sin(DegreeToRadian(_C));
+                                        }
+                                        break;
+                                    case 7:
+                                        {
+                                            hA = _b * Math.Sin(DegreeToRadian(_C));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 18:
-                        {
-                            switch (row)
+                            break;
+                        case 18:
                             {
-                                case 1:
-                                    {
-                                        B = Math.Asin(_hA / _c) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 5:
-                                    {
-                                        c = _hA / Math.Sin(DegreeToRadian(_B));
-                                    }
-                                    break;
-                                case 7:
-                                    {
-                                        hA = _c * Math.Sin(DegreeToRadian(_B));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 1:
+                                        {
+                                            B = Math.Asin(_hA / _c) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 5:
+                                        {
+                                            c = _hA / Math.Sin(DegreeToRadian(_B));
+                                        }
+                                        break;
+                                    case 7:
+                                        {
+                                            hA = _c * Math.Sin(DegreeToRadian(_B));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 19:
-                        {
-                            switch (row)
+                            break;
+                        case 19:
                             {
-                                case 2:
-                                    {
-                                        C = Math.Asin(_hB / _a) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 3:
-                                    {
-                                        a = _hB / Math.Sin(DegreeToRadian(_C));
-                                    }
-                                    break;
-                                case 8:
-                                    {
-                                        hB = _a * Math.Sin(DegreeToRadian(_C));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 2:
+                                        {
+                                            C = Math.Asin(_hB / _a) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 3:
+                                        {
+                                            a = _hB / Math.Sin(DegreeToRadian(_C));
+                                        }
+                                        break;
+                                    case 8:
+                                        {
+                                            hB = _a * Math.Sin(DegreeToRadian(_C));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 20:
-                        {
-                            switch (row)
+                            break;
+                        case 20:
                             {
-                                case 0:
-                                    {
-                                        A = Math.Asin(_hB / _c) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 5:
-                                    {
-                                        c = _hB / Math.Sin(DegreeToRadian(_A));
-                                    }
-                                    break;
-                                case 8:
-                                    {
-                                        hB = _c * Math.Sin(DegreeToRadian(_A));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 0:
+                                        {
+                                            A = Math.Asin(_hB / _c) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 5:
+                                        {
+                                            c = _hB / Math.Sin(DegreeToRadian(_A));
+                                        }
+                                        break;
+                                    case 8:
+                                        {
+                                            hB = _c * Math.Sin(DegreeToRadian(_A));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 21:
-                        {
-                            switch (row)
+                            break;
+                        case 21:
                             {
-                                case 0:
-                                    {
-                                        A = Math.Asin(_hC / _b) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        b = _hC / Math.Sin(DegreeToRadian(_A));
-                                    }
-                                    break;
-                                case 9:
-                                    {
-                                        hC = _b * Math.Sin(DegreeToRadian(_A));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 0:
+                                        {
+                                            A = Math.Asin(_hC / _b) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 4:
+                                        {
+                                            b = _hC / Math.Sin(DegreeToRadian(_A));
+                                        }
+                                        break;
+                                    case 9:
+                                        {
+                                            hC = _b * Math.Sin(DegreeToRadian(_A));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 22:
-                        {
-                            switch (row)
+                            break;
+                        case 22:
                             {
-                                case 1:
-                                    {
-                                        B = Math.Asin(_hC / _a) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 3:
-                                    {
-                                        a = _hC / Math.Sin(DegreeToRadian(_B));
-                                    }
-                                    break;
-                                case 9:
-                                    {
-                                        hC = _a * Math.Sin(DegreeToRadian(_B));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 1:
+                                        {
+                                            B = Math.Asin(_hC / _a) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 3:
+                                        {
+                                            a = _hC / Math.Sin(DegreeToRadian(_B));
+                                        }
+                                        break;
+                                    case 9:
+                                        {
+                                            hC = _a * Math.Sin(DegreeToRadian(_B));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                    case 23:
-                        {
-                            switch (row)
+                            break;
+                        case 23:
                             {
-                                case 0:
-                                    {
-                                        A = Math.Acos(((_b * _b) + (_c * _c) - (_a * _a)) / (2 * _b * _c)) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 3:
-                                    {
-                                        a = Math.Sqrt((_b * _b) + (_c * _c) - (2 * _b * _c * Math.Cos(DegreeToRadian(_A))));
-                                    }
-                                    break;
-                                case 4:
-                                    {
-                                        continue;
-                                    }
-                                case 5:
-                                    {
-                                        continue;
-                                    }
+                                switch (row)
+                                {
+                                    case 0:
+                                        {
+                                            A = Math.Acos(((_b * _b) + (_c * _c) - (_a * _a)) / (2 * _b * _c)) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 3:
+                                        {
+                                            a = Math.Sqrt((_b * _b) + (_c * _c) - (2 * _b * _c * Math.Cos(DegreeToRadian(_A))));
+                                        }
+                                        break;
+                                    case 4:
+                                        {
+                                            if (!border.Add(new Pair(row, col))) throw new Exception();
+                                            continue;
+                                        }
+                                    case 5:
+                                        {
+                                            if (!border.Add(new Pair(row, col))) throw new Exception();
+                                            continue;
+                                        }
+                                }
                             }
-                        }
-                        break;
-                    case 24:
-                        {
-                            switch (row)
+                            break;
+                        case 24:
                             {
-                                case 1:
-                                    {
-                                        B = Math.Acos(((_a * _a) + (_c * _c) - (_b * _b)) / (2 * _a * _c)) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 3:
-                                    {
-                                        continue;
-                                    }
-                                case 4:
-                                    {
-                                        b = Math.Sqrt((_a * _a) + (_c * _c) - (2 * _a * _c * Math.Cos(DegreeToRadian(_B))));
-                                    }
-                                    break;
-                                case 5:
-                                    {
-                                        continue;
-                                    }
+                                switch (row)
+                                {
+                                    case 1:
+                                        {
+                                            B = Math.Acos(((_a * _a) + (_c * _c) - (_b * _b)) / (2 * _a * _c)) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 3:
+                                        {
+                                            if (!border.Add(new Pair(row, col))) throw new Exception();
+                                            continue;
+                                        }
+                                    case 4:
+                                        {
+                                            b = Math.Sqrt((_a * _a) + (_c * _c) - (2 * _a * _c * Math.Cos(DegreeToRadian(_B))));
+                                        }
+                                        break;
+                                    case 5:
+                                        {
+                                            if (!border.Add(new Pair(row, col))) throw new Exception();
+                                            continue;
+                                        }
+                                }
                             }
-                        }
-                        break;
-                    case 25:
-                        {
-                            switch (row)
+                            break;
+                        case 25:
                             {
-                                case 2:
-                                    {
-                                        C = Math.Acos(((_a * _a) + (_b * _b) - (_c * _c)) / (2 * _a * _b)) * (180 / Math.PI);
-                                    }
-                                    break;
-                                case 3:
-                                    {
-                                        continue;
-                                    }
-                                case 4:
-                                    {
-                                        continue;
-                                    }
-                                case 5:
-                                    {
-                                        c = Math.Sqrt((_a * _a) + (_b * _b) - (2 * _a * _b * Math.Cos(DegreeToRadian(_C))));
-                                    }
-                                    break;
+                                switch (row)
+                                {
+                                    case 2:
+                                        {
+                                            C = Math.Acos(((_a * _a) + (_b * _b) - (_c * _c)) / (2 * _a * _b)) * (180 / Math.PI);
+                                        }
+                                        break;
+                                    case 3:
+                                        {
+                                            if (!border.Add(new Pair(row, col))) throw new Exception();
+                                            continue;
+                                        }
+                                    case 4:
+                                        {
+                                            if (!border.Add(new Pair(row, col))) throw new Exception();
+                                            continue;
+                                        }
+                                    case 5:
+                                        {
+                                            c = Math.Sqrt((_a * _a) + (_b * _b) - (2 * _a * _b * Math.Cos(DegreeToRadian(_C))));
+                                        }
+                                        break;
+                                }
                             }
-                        }
-                        break;
-                }
-                history[col] = row;
+                            break;
+                    }
+                    history[col] = row;
+                } catch (Exception ex)
+                {
+                    err = true;
+                    System.Diagnostics.Debug.WriteLine(ex);
+                    return;
+                }                
             }
             Debug(this);
             if (tryAgain)
                 Calculate();
+            if (!(_a < _b + _c && _b < _a + _c && _c < _a + _b) && err)
+                err = true;
         }
 
         public static void Debug(SemanticNetworkTriangle semanticNetwork)
@@ -919,11 +959,11 @@
             {
                 if (first)
                 {
-                    //for (int col = 0; col < nCol; col++)
-                    //{
-                    //    System.Diagnostics.Debug.Write($"{string.Format("{0,3}", col + 1)}\t");
-                    //}
-                    //System.Diagnostics.Debug.Write("\n");
+                    for (int col = 0; col < nCol; col++)
+                    {
+                        System.Diagnostics.Debug.Write($"{string.Format("{0,3}", col)}\t");
+                    }
+                    System.Diagnostics.Debug.Write("\n");
                     first = false;
                 }
                 for (int col = 0; col < nCol; col++)
