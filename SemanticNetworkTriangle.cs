@@ -320,7 +320,6 @@
                                         b = _c * Math.Sin(DegreeToRadian(_B)) / Math.Sin(DegreeToRadian(_C));
                                     }
                                     break;
-
                                 case 5:
                                     {
                                         c = _b * Math.Sin(DegreeToRadian(_C)) / Math.Sin(DegreeToRadian(_B));
@@ -911,7 +910,6 @@
             Debug(this);
             if (tryAgain)
                 Calculate();
-            isCalculate = false;
         }
 
         public static void Debug(SemanticNetworkTriangle semanticNetwork)
