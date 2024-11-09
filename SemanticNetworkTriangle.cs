@@ -281,11 +281,11 @@
             bool tryAgain = false;
             for (int col = 0; col < nCol; col++)
             {
-                System.Diagnostics.Debug.WriteLine($"Select col: {col}");
+                if (history.Keys.Contains(col))
+                    continue;
                 int row = TriggerCol(col);
                 if (row == -1)
                     continue;
-                System.Diagnostics.Debug.WriteLine($"Select row: {row}");
                 if (_a != 0 && _b != 0 && _c != 0)
                     if (!(_a < _b + _c && _b < _a + _c && _c < _a + _b))
                     {
